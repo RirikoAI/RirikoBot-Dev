@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  ririkobot:
+    build:
+      context: ./RirikoBot
+      dockerfile: Dockerfile.dev
+    image: ririkoai/ririkobot-development
+    container_name: ririkobot
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./RirikoBot:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  ririkobot-dashboard:
+    build:
+      context: ./RirikoBot-Dashboard
+      dockerfile: Dockerfile.dev
+    image: ririkoai/ririkobot-dashboard-development
+    container_name: RirikoBot-Dashboard
+    restart: unless-stopped
+    ports:
+      - "8100:8100"
+    volumes:
+      - ./RirikoBot-Dashboard:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
