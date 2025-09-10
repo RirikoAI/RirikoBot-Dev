@@ -6,7 +6,7 @@ services:
       context: ./RirikoBot
       dockerfile: Dockerfile.dev
     image: ririkoai/ririkobot-development
-    container_name: ririkobot
+    container_name: RirikoBot
     restart: unless-stopped
     ports:
       - "3000:3000"
